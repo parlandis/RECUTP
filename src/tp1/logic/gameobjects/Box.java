@@ -140,4 +140,16 @@ public class Box extends GameObject {
 	public GameObject copy() {
 		return new Box(this);
 	}
+
+	@Override
+	public void reverse() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean receiveInteraction(Grenade grenade) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

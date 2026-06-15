@@ -12,6 +12,7 @@ public class Mario extends MovingObject implements Player {
 	private boolean big;
 	private ActionList acciones;
 	private Action lastDirH;
+	private int contG;
 
 	public Mario() {
 		super(null, null, Action.RIGHT);
@@ -19,6 +20,7 @@ public class Mario extends MovingObject implements Player {
 
 	public Mario(GameWorld game, Position pos) {
 		this(game, pos, Action.RIGHT, true);
+		this.contG = 0;
 	}
 
 	private Mario(Mario other) { 
@@ -78,19 +80,33 @@ public class Mario extends MovingObject implements Player {
 	}
 
 	private void doAction(Action a) {
-		if (a == Action.UP) {
-			if (canMove(a))
-				jump();
-		} else if (a == Action.DOWN) {
-			if (!stay()) {
-				while (!fall() && isAlive()) {
-					requestInteractions();
-				}
+		if(a == Action.GRANADE) {
+			Position pos = getPosition();
+			Position pos0 = pos.move(getDirection());
+			Grenade gr = new Grenade(game, pos0, getDirection(), 3);
+			addObject(gr);
+			int cont = 0;
+			while(cont < 2 && gr.isAlive()) {
+				gr.moveHorizontal(getDirection());
+				gr.requestInteractions();
+				cont++;
 			}
-		} else {
-
-			moveHorizontal(a);
-
+		}
+		else {
+			if (a == Action.UP) {
+				if (canMove(a))
+					jump();
+			} else if (a == Action.DOWN) {
+				if (!stay()) {
+					while (!fall() && isAlive()) {
+						requestInteractions();
+					}
+				}
+			} else {
+	
+				moveHorizontal(a);
+	
+			}
 		}
 	}
 
@@ -222,6 +238,10 @@ public class Mario extends MovingObject implements Player {
 	protected String getName() {
 		return Messages.MARIO_NAME;
 	}
+	
+	protected int getCont() {
+		return contG;
+	}
 
 	@Override
 	protected String getShort() {
@@ -231,6 +251,12 @@ public class Mario extends MovingObject implements Player {
 	@Override
 	public GameObject copy() {
 		return new Mario(this);
+	}
+
+	@Override
+	public boolean receiveInteraction(Grenade grenade) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

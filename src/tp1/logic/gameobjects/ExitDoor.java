@@ -112,4 +112,16 @@ public class ExitDoor extends GameObject {
 	public String toString() {
 		return getPosition().toString() + " " + Messages.EXITDOOR_NAME;
 	}
+
+	@Override
+	public void reverse() {
+		
+		
+	}
+
+	@Override
+	public boolean receiveInteraction(Grenade grenade) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

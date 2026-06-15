@@ -52,6 +52,10 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		} else
 			end = true;
 	}
+	
+	public void explode(Position pos) {
+		gameObjects.explode(pos);
+	}
 
 	@Override
 	public void save(String fileName) throws GameModelException {
@@ -138,6 +142,10 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 	public void exit() {
 		this.end = true;
+	}
+	
+	public void reverse(){
+		this.gameObjects.reverse();
 	}
 
 	public boolean isFinished() {

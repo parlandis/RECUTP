@@ -16,7 +16,8 @@ public class CommandGenerator {
 			new UpdateCommand(),
 			new ResetCommand(),
 			new HelpCommand(),
-			new ExitCommand());
+			new ExitCommand(),
+			new ReverseCommand());
 
 	public static Command parse(String[] commandWords) throws CommandParseException {
 		if (commandWords == null)

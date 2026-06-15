@@ -26,6 +26,12 @@ public class Position {
     public boolean equals(Object obj) {
     	return this == obj || obj != null && this.getClass() == obj.getClass() && col == ((Position) obj).col && row == ((Position) obj).row;
     }
+    
+    public boolean menor1(Position pos) {
+    	
+    	
+    	return false;
+    }
 
     @Override
     public String toString() {

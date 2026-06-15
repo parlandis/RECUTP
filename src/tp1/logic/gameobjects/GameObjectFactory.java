@@ -14,11 +14,13 @@ import java.util.List;
 public class GameObjectFactory {
 	private static final List<GameObject> listaObjectos = Arrays.asList(
 	        new Mario(), 
+	        new Grenade(),
 			new Land(),
 	        new ExitDoor(),
 	        new Goomba(),
 	        new Box(),
 	        new Mushroom()
+
 	);
 
 	public static GameObject parse(String[] objWords, GameWorld game) throws GameParseException, OffBoardException  {

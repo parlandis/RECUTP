@@ -22,6 +22,16 @@ public class GameObjectContainer {
         if (obj != null)
             gameObjects.add(obj);
     }
+    
+    public void explode(Position pos) {
+        List<GameObject> copia = new ArrayList<>(gameObjects);
+        
+        for(GameObject obj: copia) {
+        	if(obj.isAlive()) {
+        		
+        	}
+        }
+    }
 
     public void update() {
         List<GameObject> copia = new ArrayList<>(gameObjects);
@@ -34,6 +44,17 @@ public class GameObjectContainer {
         }
 
         removeDeadObjects();
+    }
+    
+    public void reverse() {
+        List<GameObject> copia = new ArrayList<>(gameObjects);
+        
+        for(GameObject obj : copia) {
+        	if(obj.isAlive()) {
+        		obj.reverse();
+        	}
+        }
+        
     }
 
     public void doInteractionFrom(GameItem item) {

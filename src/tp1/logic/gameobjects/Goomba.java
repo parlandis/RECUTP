@@ -111,4 +111,10 @@ public class Goomba extends MovingObject {
 		return new Goomba(this);
 	}
 
+	@Override
+	public boolean receiveInteraction(Grenade grenade) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

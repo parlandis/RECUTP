@@ -100,4 +100,16 @@ public class Land extends GameObject {
 	public String toString() {
 		return getPosition().toString() + " " + Messages.LAND_NAME;
 	}
+
+	@Override
+	public void reverse() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean receiveInteraction(Grenade grenade) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

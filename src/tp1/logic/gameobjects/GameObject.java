@@ -76,6 +76,10 @@ public abstract class GameObject implements GameItem {
 	protected void die() {
 		this.isAlive = false;
 	}
+	
+	public abstract void reverse();
+	
+
 
 	public abstract boolean isSolid(Position pos);
 
@@ -108,6 +112,9 @@ public abstract class GameObject implements GameItem {
 
 	@Override
 	public abstract boolean receiveInteraction(Land land);
+	
+	@Override 
+	public abstract boolean receiveInteraction(Grenade grenade);
 
 	@Override
 	public abstract boolean receiveInteraction(ExitDoor exitDoor);

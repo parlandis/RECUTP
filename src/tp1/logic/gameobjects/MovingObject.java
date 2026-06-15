@@ -69,6 +69,12 @@ public abstract class MovingObject extends GameObject {
 	protected boolean isFalling() {
 		return isFalling;
 	}
+	
+	//Reverse apartado a
+	@Override
+	public void reverse() {
+		this.direction = this.direction.opuesta(); 
+	}
 
 	@Override
 	public void update() {

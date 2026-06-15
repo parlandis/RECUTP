@@ -9,7 +9,7 @@ import tp1.view.Messages;
  *
  */
 public enum Action {
-	LEFT(-1, 0), RIGHT(1, 0), DOWN(0, 1), UP(0, -1), STOP(0, 0);
+	LEFT(-1, 0), RIGHT(1, 0), DOWN(0, 1), UP(0, -1), STOP(0, 0), GRANADE(1,1);
 
 	private int x;
 	private int y;
@@ -42,6 +42,9 @@ public enum Action {
 				case "left":
 					movimiento = Action.LEFT;
 					break;
+				case "gr":
+				case "granade":
+					movimiento = Action.GRANADE;
 				case "r":
 				case "right":
 					movimiento = Action.RIGHT;
@@ -94,13 +97,21 @@ public enum Action {
 				case "RIGHT":
 					act = RIGHT;
 					break;
+				case "GRANADE":
+				case "GR": 
+					act = GRANADE;
+					break;
 				case "U":
 				case "UP":
+					break;
 				case "D":
 				case "DOWN":
+					break;
 				case "S":
 				case "STOP":
+					act = STOP;
 					break;
+				
 				default:
 					throw new ActionParseException(Messages.UNKNOWN_ACTION.formatted(str));
 			}

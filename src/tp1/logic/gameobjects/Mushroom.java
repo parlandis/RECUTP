@@ -107,4 +107,10 @@ public class Mushroom extends MovingObject {
 	public GameObject copy() {
 		return new Mushroom(this);
 	}
+
+	@Override
+	public boolean receiveInteraction(Grenade grenade) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -168,6 +168,13 @@ public class Messages {
 	public static final String COMMAND_HELP_DETAILS = "[h]elp";
 	public static final String COMMAND_HELP_HELP = "print this help message";
 	
+	//Reverse
+	public static final String COMMAND_REVERSE_NAME = "reverseDirections";
+	public static final String COMMAND_REVERSE_SHORTCUT = "rD";
+	public static final String COMMAND_REVERSE_DETAILS = "[r]everse [D]irections";
+	public static final String COMMAND_REVERSE_HELP = "reverse all moving objects’ directions";
+	
+	
 	
 	//GAME OBJECTS
 	public static final String MARIO_NAME = "MARIO";
@@ -182,6 +189,9 @@ public class Messages {
 	public static final String EXITDOOR_SHORTCUT = "ED";
 	public static final String LAND_NAME = "LAND";
 	public static final String LAND_SHORTCUT = "L";
+	public static final String GRENADE_NAME = "GRENADE";
+	public static final String GRENADE_SHORTCUT = "Gr";
+	
 	
 	
 	//DIRECTIONS
@@ -206,6 +216,7 @@ public class Messages {
 	public static final String MARIO_LEFT = "🚶";//"⬅️🚶";
 	public static final String GOOMBA = "🐻";	
 	public static final String MUSHROOM = "🍄";
+	public static final String GRENADE = "💣";
     public static final String BOX_EMPTY = MyStringUtils.repeat("0",ConsoleView.CELL_SIZE);
 	public static final String BOX_FULL = MyStringUtils.repeat("?",ConsoleView.CELL_SIZE);
 	public static final String EMPTY_BOX = MyStringUtils.repeat("0",ConsoleView.CELL_SIZE);
@@ -227,7 +238,7 @@ public class Messages {
 
 
 	// PARSE ERRORS
-
+	public static final String INVALID_TURNOS = "Invalid turnos: \"%s\"";
 	public static final String OFF_BOARD_POSITION = "Object position is off board: \"%s\"";
 	public static final String INVALID_POSITION = "Invalid position: \"%s\"";
 	public static final String INVALID_OBJECT_POSITION = "Invalid object position: \"%s\"";
