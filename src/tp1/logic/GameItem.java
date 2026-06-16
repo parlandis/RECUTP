@@ -17,4 +17,5 @@ public interface GameItem {
     boolean receiveInteraction(Mushroom obj);
     boolean receiveInteraction(Box obj);   
     void verticalReverse();
+	boolean receiveInteraction(Missile missile);
 }

@@ -107,4 +107,16 @@ public class Mushroom extends MovingObject {
 	public GameObject copy() {
 		return new Mushroom(this);
 	}
+
+	@Override
+	public boolean receiveInteraction(Missile missile) {
+		boolean interacted = false;
+		if(missile.isInPosition(getPosition())) {
+			interacted = true;
+			//game.addPoints(100);
+			missile.receiveInteraction(this);
+			super.die();
+		}
+		return interacted;
+	}
 }

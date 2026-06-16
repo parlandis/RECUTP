@@ -9,7 +9,7 @@ import tp1.view.Messages;
  *
  */
 public enum Action {
-	LEFT(-1, 0), RIGHT(1, 0), DOWN(0, 1), UP(0, -1), STOP(0, 0);
+	LEFT(-1, 0), RIGHT(1, 0), DOWN(0, 1), UP(0, -1), STOP(0, 0), MISSILE(0,0);  // 0,0 porque si 
 
 	private int x;
 	private int y;
@@ -37,6 +37,10 @@ public enum Action {
 				case "u":
 				case "up":
 					movimiento = Action.UP;
+					break;
+				case "ms":
+				case "missile":
+					movimiento = Action.MISSILE;
 					break;
 				case "l":
 				case "left":
@@ -75,6 +79,9 @@ public enum Action {
 			case DOWN:
 				accion = UP;
 				break;
+			case MISSILE: 
+				accion = null;
+				break;
 		}
 		return accion;
 	}
@@ -93,6 +100,10 @@ public enum Action {
 				case "R":
 				case "RIGHT":
 					act = RIGHT;
+					break;
+				case "ms":
+				case "missile":
+					act = Action.MISSILE;
 					break;
 				case "U":
 				case "UP":

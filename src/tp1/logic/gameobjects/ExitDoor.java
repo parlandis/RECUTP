@@ -112,4 +112,9 @@ public class ExitDoor extends GameObject {
 	public String toString() {
 		return getPosition().toString() + " " + Messages.EXITDOOR_NAME;
 	}
+
+	@Override
+	public boolean receiveInteraction(Missile missile) { // No se si tambien cuenta como objeto porque ya no se podria ganar lo dejo en false por ello
+		return false;
+	}
 }

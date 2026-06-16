@@ -140,4 +140,15 @@ public class Box extends GameObject {
 	public GameObject copy() {
 		return new Box(this);
 	}
+
+	@Override
+	public boolean receiveInteraction(Missile missile) {
+		boolean interacted = false;
+		if(missile.isInPosition(getPosition())) {
+			interacted = true;
+			missile.explode(); 
+			super.die();
+		}
+		return interacted;
+	}
 }

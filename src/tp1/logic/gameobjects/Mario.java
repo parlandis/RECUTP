@@ -78,19 +78,26 @@ public class Mario extends MovingObject implements Player {
 	}
 
 	private void doAction(Action a) {
-		if (a == Action.UP) {
-			if (canMove(a))
-				jump();
-		} else if (a == Action.DOWN) {
-			if (!stay()) {
-				while (!fall() && isAlive()) {
-					requestInteractions();
+		if(a == Action.MISSILE) {
+			Missile missile = new Missile(this.game, getPosition(), getDirection(), 0);
+			addObject(missile);
+			missile.initMove();
+		}
+		else {
+			if (a == Action.UP) {
+				if (canMove(a))
+					jump();
+			} else if (a == Action.DOWN) {
+				if (!stay()) {
+					while (!fall() && isAlive()) {
+						requestInteractions();
+					}
 				}
+			} else {
+
+				moveHorizontal(a);
+
 			}
-		} else {
-
-			moveHorizontal(a);
-
 		}
 	}
 
@@ -231,6 +238,11 @@ public class Mario extends MovingObject implements Player {
 	@Override
 	public GameObject copy() {
 		return new Mario(this);
+	}
+
+	@Override
+	public boolean receiveInteraction(Missile missile) {
+		return false;
 	}
 
 }

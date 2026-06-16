@@ -4,6 +4,7 @@ import tp1.exceptions.CommandParseException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.logic.Action;
+import tp1.logic.GameItem;
 import tp1.logic.GameWorld;
 import tp1.logic.Position;
 import tp1.view.Messages;
@@ -14,12 +15,12 @@ public class Missile extends MovingObject{
 	
 	Missile(){
 		super(null, null, Action.RIGHT);
-		this.cont = 3;
+		this.cont = 0;
 		this.exploded = false;
 	}
 	
 	public Missile(GameWorld game, Position pos) {
-		this(game, pos, Action.RIGHT, 3);
+		this(game, pos, Action.RIGHT, 0);
 		
 	}
 	
@@ -39,7 +40,7 @@ public class Missile extends MovingObject{
 		if(objWords.length == 2) {
 			dir = Action.RIGHT;
 		}
-		int cont = 3;
+		int cont = 0;
 		if(objWords.length == 4) {
 			try {
 				cont = Integer.parseInt(objWords[3]);
@@ -62,11 +63,43 @@ public class Missile extends MovingObject{
 		return missile;
 	}
 	
-	@Override
-	public void update() {
-		if(cont > 0) {
+	//Si salirse del mapa se refieren tamboien por los lado habria que implementar 
+	protected void moveHorizontalMiss(Action dir) {
+		Position newPos = getPosition().move(dir);
+		move(dir);
+		if(!getPosition().isValid())explode();
+	}
+	
+	protected void initMove() {  // si se sale por los lados cambiamos movehorizontal a moveHorizontalMiss
+		moveHorizontal(getDirection());
+		requestInteractions();
+		if(!exploded) {
 			moveHorizontal(getDirection());
 			requestInteractions();
+		}
+		
+	}
+	
+	public void explode() { // Por ahora publico igual lo cambio a privado
+		exploded = true;
+		super.die();
+	}
+	
+	@Override
+	public void update() {
+		if(cont < 3) {
+			moveHorizontalMiss(getDirection());
+			requestInteractions();
+			if(cont < 3 && isAlive()) {
+				moveHorizontalMiss(getDirection());
+				requestInteractions();
+			}
+			else {
+				explode();
+			}
+		}
+		else {
+			explode();
 		}
 	}
 
@@ -95,10 +128,31 @@ public class Missile extends MovingObject{
 
 		return "MS";
 	}
+	
+	@Override
+	public boolean interactWith(GameItem other) {
+		return other.isInPosition(getPosition()) && other.isAlive() && other.receiveInteraction(this);
+	}
 
 	@Override
 	public boolean receiveInteraction(Land land) {
 		return false;
+	}
+	
+	@Override
+	public boolean receiveInteraction(Mario mario) {
+		return false;
+	}
+	
+	@Override
+	public boolean receiveInteraction(Missile missile) {
+		boolean interacted = false;
+		if(missile.isInPosition(getPosition())) {
+			interacted = true;
+			missile.explode();
+			this.explode();
+		}
+		return interacted;
 	}
 
 	@Override
@@ -108,7 +162,26 @@ public class Missile extends MovingObject{
 
 	@Override
 	public boolean receiveInteraction(Mushroom mushroom) {
-		return false;
+		boolean interacted = false;
+		if(mushroom.isInPosition(getPosition())) {
+			interacted = true;
+			cont++;
+			if(cont >= 3) explode();
+		}
+
+		return interacted;
+	}
+	
+	@Override
+	public boolean receiveInteraction(Goomba goomba) {
+		boolean interacted = false;
+		if(goomba.isInPosition(getPosition())) {
+			interacted = true;
+			cont++;
+			if(cont >= 3) explode();
+		}
+
+		return interacted;
 	}
 
 	@Override

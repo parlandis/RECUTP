@@ -100,4 +100,15 @@ public class Land extends GameObject {
 	public String toString() {
 		return getPosition().toString() + " " + Messages.LAND_NAME;
 	}
+
+	@Override
+	public boolean receiveInteraction(Missile missile) {
+		boolean interacted = false;
+		if(missile.isInPosition(getPosition())) {
+			interacted = true;
+			missile.explode(); 
+			super.die();
+		}
+		return interacted;
+	}
 }

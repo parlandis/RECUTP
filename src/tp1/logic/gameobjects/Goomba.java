@@ -111,4 +111,16 @@ public class Goomba extends MovingObject {
 		return new Goomba(this);
 	}
 
+	@Override
+	public boolean receiveInteraction(Missile missile) {
+		boolean interacted = false;
+		if(missile.isInPosition(getPosition())) {
+			interacted = true;
+			game.addPoints(100);
+			missile.receiveInteraction(this);
+			super.die();
+		}
+		return interacted;
+	}
+
 }
