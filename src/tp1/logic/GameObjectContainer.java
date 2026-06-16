@@ -35,6 +35,17 @@ public class GameObjectContainer {
 
         removeDeadObjects();
     }
+    
+	public void teleport(Position posIni, Position posfin) {
+        List<GameObject> copia = new ArrayList<>(gameObjects);
+
+        for (GameObject obj : copia) {
+        	if(obj.isInPosition(posIni)) {
+        		obj.teleport(posfin);
+        	}
+        }
+		
+	}
 
     public void doInteractionFrom(GameItem item) {
         List<GameObject> copia = new ArrayList<>(gameObjects);
@@ -111,4 +122,6 @@ public class GameObjectContainer {
         }
         return sb.toString();
     }
+
+
 }

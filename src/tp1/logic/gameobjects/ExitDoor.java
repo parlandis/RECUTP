@@ -112,4 +112,9 @@ public class ExitDoor extends GameObject {
 	public String toString() {
 		return getPosition().toString() + " " + Messages.EXITDOOR_NAME;
 	}
+
+	@Override
+	public boolean receiveInteraction(Sparkles sparkles) {
+		return false;
+	}
 }

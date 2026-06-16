@@ -29,7 +29,7 @@ public abstract class AbstractCommand implements Command {
 	protected String getHelp() { return help; }
 
 	public abstract void execute(GameModel game, GameView view) throws CommandExecuteException;	  
-	public abstract Command parse(String[] commandWords) throws CommandParseException;
+	public abstract Command parse(String[] commandWords) throws CommandParseException, CommandExecuteException;
 
 	protected boolean matchCommandName(String name) {
 		return getShortcut().equalsIgnoreCase(name) || 

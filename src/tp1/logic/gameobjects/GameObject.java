@@ -125,4 +125,8 @@ public abstract class GameObject implements GameItem {
 	public abstract boolean receiveInteraction(Box box);
 
 	public abstract GameObject copy();
+
+	public void teleport(Position posfin) {
+		pos = pos.teleport(posfin);
+	}
 }

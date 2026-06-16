@@ -29,4 +29,6 @@ public interface GameModel {
     void load(String fileName) throws GameLoadException;
 
     void resetConfig();
+
+	void teleport(Position posIni, Position posFin);
 }

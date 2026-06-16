@@ -8,7 +8,7 @@ import tp1.view.GameView;
 public interface Command {
 
 	public void execute(GameModel game, GameView view) throws CommandExecuteException ;	  
-	public Command parse(String[] commandWords) throws CommandParseException;
+	public Command parse(String[] commandWords) throws CommandParseException, CommandExecuteException;
 
 	public String helpText();
 }

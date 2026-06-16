@@ -78,19 +78,27 @@ public class Mario extends MovingObject implements Player {
 	}
 
 	private void doAction(Action a) {
-		if (a == Action.UP) {
-			if (canMove(a))
-				jump();
-		} else if (a == Action.DOWN) {
-			if (!stay()) {
-				while (!fall() && isAlive()) {
-					requestInteractions();
+		
+		if(a == Action.SPARKLES) {
+			Sparkles sparkles = new Sparkles(game, getPosition(), getDirection(), 2);
+			addObject(sparkles);
+			sparkles.update();
+		}
+		else {
+			if (a == Action.UP) {
+				if (canMove(a))
+					jump();
+			} else if (a == Action.DOWN) {
+				if (!stay()) {
+					while (!fall() && isAlive()) {
+						requestInteractions();
+					}
 				}
+			} else {
+
+				moveHorizontal(a);
+
 			}
-		} else {
-
-			moveHorizontal(a);
-
 		}
 	}
 
@@ -231,6 +239,17 @@ public class Mario extends MovingObject implements Player {
 	@Override
 	public GameObject copy() {
 		return new Mario(this);
+	}
+
+	@Override
+	public boolean receiveInteraction(Sparkles sparkles) { //Nose si le da tmb
+		boolean interacted = false;
+		if(sparkles.isInPosition(getPosition())) {
+			interacted = true;
+			this.spark();
+		}
+		
+		return interacted;
 	}
 
 }

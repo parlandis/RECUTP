@@ -137,6 +137,10 @@ public abstract class MovingObject extends GameObject {
 	protected Action getDirection() {
 		return this.direction;
 	}
+	
+	protected void spark() {
+		this.direction = Action.STOP;
+	}
 
 	@Override
 	public String getIcon() {

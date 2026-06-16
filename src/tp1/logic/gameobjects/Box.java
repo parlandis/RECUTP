@@ -140,4 +140,14 @@ public class Box extends GameObject {
 	public GameObject copy() {
 		return new Box(this);
 	}
+
+	@Override
+	public boolean receiveInteraction(Sparkles sparkles) {
+		boolean interacted = false;
+		if(sparkles.isInPosition(getPosition())) {
+			interacted = true;
+			sparkles.die();
+		}
+		return interacted;
+	}
 }

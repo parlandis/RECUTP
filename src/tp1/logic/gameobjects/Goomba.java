@@ -111,4 +111,15 @@ public class Goomba extends MovingObject {
 		return new Goomba(this);
 	}
 
+	@Override
+	public boolean receiveInteraction(Sparkles sparkles) {
+		boolean interacted = false;
+		if(sparkles.isInPosition(getPosition())) {
+			interacted = true;
+			this.spark();
+		}
+		
+		return interacted;
+	}
+
 }

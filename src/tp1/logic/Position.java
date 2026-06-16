@@ -18,6 +18,10 @@ public class Position {
         return new Position(row + dir.getY(), col + dir.getX());
     }
     
+    public Position teleport(Position posFin) {
+    	return new Position(posFin.row, posFin.col);
+    }
+    
     public boolean isValid() {
         return this.col >= 0 && this.col < Game.DIM_X && this.row >= 0 && this.row < Game.DIM_Y;
     }

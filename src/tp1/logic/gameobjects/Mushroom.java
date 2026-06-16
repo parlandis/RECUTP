@@ -107,4 +107,15 @@ public class Mushroom extends MovingObject {
 	public GameObject copy() {
 		return new Mushroom(this);
 	}
+
+	@Override
+	public boolean receiveInteraction(Sparkles sparkles) {
+		boolean interacted = false;
+		if(sparkles.isInPosition(getPosition())) {
+			interacted = true;
+			this.spark();
+		}
+		
+		return interacted;
+	}
 }

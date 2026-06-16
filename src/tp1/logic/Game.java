@@ -43,6 +43,10 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		this.gameObjects = new GameObjectContainer();
 		intitLevel(nLevel);
 	}
+	
+	public void teleport(Position posIni, Position posfin) {
+		gameObjects.teleport(posIni, posfin);
+	}
 
 	public void update() {
 		if (remainingTime > 0) {

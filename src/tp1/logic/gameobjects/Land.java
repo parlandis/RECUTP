@@ -100,4 +100,14 @@ public class Land extends GameObject {
 	public String toString() {
 		return getPosition().toString() + " " + Messages.LAND_NAME;
 	}
+
+	@Override
+	public boolean receiveInteraction(Sparkles sparkles) {
+		boolean interacted = false;
+		if(sparkles.isInPosition(getPosition())) {
+			interacted = true;
+			sparkles.die();
+		}
+		return interacted;
+	}
 }

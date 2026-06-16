@@ -9,6 +9,7 @@ import tp1.view.Messages;
 public class CommandGenerator {
 
 	private static final List<Command> availableCommands = Arrays.asList( // Siempre tenemos que declarar los comandos
+			new TeleportationCommand(),
 			new LoadCommand(),
 			new SaveCommand(),
 			new AddObjectCommand(),
@@ -22,7 +23,14 @@ public class CommandGenerator {
 		if (commandWords == null)
 			throw new CommandParseException(Messages.INVALID_COMMAND);
 		for (Command c : availableCommands) {
-			Command parsed = c.parse(commandWords);
+			Command parsed = null;
+			try {
+				parsed = c.parse(commandWords);
+			} catch (CommandParseException e) {
+				e.printStackTrace();
+			} catch (CommandExecuteException e) {
+				e.printStackTrace();
+			}
 			if (parsed != null) {
 				return parsed;
 			}
