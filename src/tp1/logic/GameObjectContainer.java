@@ -35,6 +35,15 @@ public class GameObjectContainer {
 
         removeDeadObjects();
     }
+    
+ //TODO: apartado a 
+	public void verticalReverse() {
+        List<GameObject> copia = new ArrayList<>(gameObjects);
+		
+        for (GameObject obj : copia) {
+        	obj.verticalReverse();
+        }
+	}
 
     public void doInteractionFrom(GameItem item) {
         List<GameObject> copia = new ArrayList<>(gameObjects);
@@ -111,4 +120,5 @@ public class GameObjectContainer {
         }
         return sb.toString();
     }
+
 }

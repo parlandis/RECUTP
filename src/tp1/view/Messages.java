@@ -206,6 +206,7 @@ public class Messages {
 	public static final String MARIO_LEFT = "🚶";//"⬅️🚶";
 	public static final String GOOMBA = "🐻";	
 	public static final String MUSHROOM = "🍄";
+	public static final String MISSILE = "🚀";
     public static final String BOX_EMPTY = MyStringUtils.repeat("0",ConsoleView.CELL_SIZE);
 	public static final String BOX_FULL = MyStringUtils.repeat("?",ConsoleView.CELL_SIZE);
 	public static final String EMPTY_BOX = MyStringUtils.repeat("0",ConsoleView.CELL_SIZE);

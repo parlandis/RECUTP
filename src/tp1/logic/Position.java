@@ -61,4 +61,20 @@ public class Position {
     public int hashCode() {
         return 31 * row + col;
     }
+
+	public Position verticalReverse() {
+		int x = this.col;
+		int y = this.row; // este queda igual
+		
+		
+		int variacionx = (15 - x);
+		int nx = 15 + variacionx;
+		if(nx == 30) {
+			nx = 29;
+		}
+		
+	
+
+		return new Position(y, nx);
+	}
 }

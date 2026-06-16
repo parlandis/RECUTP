@@ -116,6 +116,12 @@ public class Game implements GameModel, GameStatus, GameWorld {
 			intitLevel(this.nLevel);
 		}
 	}
+	
+	//TODO: apartado a 
+	public void verticalReverse() {
+		//ej eje vertical parte en 15 
+		gameObjects.verticalReverse();
+	}
 
 	public boolean reset(int nLevel) {
 		boolean resetado = true;

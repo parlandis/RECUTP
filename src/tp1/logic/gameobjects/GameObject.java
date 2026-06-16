@@ -29,6 +29,10 @@ public abstract class GameObject implements GameItem {
 	protected void move(Action dir) {
 		this.pos = this.pos.move(dir);
 	}
+	
+	public void verticalReverse() {
+		this.pos = this.pos.verticalReverse();
+	}
 
 	public GameObject parse(String[] objWords, GameWorld game) throws ObjectParseException, OffBoardException {
 		GameObject obj = null;
@@ -125,4 +129,6 @@ public abstract class GameObject implements GameItem {
 	public abstract boolean receiveInteraction(Box box);
 
 	public abstract GameObject copy();
+
+
 }

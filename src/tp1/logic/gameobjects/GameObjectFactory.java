@@ -13,6 +13,7 @@ import java.util.List;
 
 public class GameObjectFactory {
 	private static final List<GameObject> listaObjectos = Arrays.asList(
+			new Missile(),
 	        new Mario(), 
 			new Land(),
 	        new ExitDoor(),

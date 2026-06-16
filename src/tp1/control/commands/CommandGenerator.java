@@ -9,6 +9,7 @@ import tp1.view.Messages;
 public class CommandGenerator {
 
 	private static final List<Command> availableCommands = Arrays.asList( // Siempre tenemos que declarar los comandos
+			new VerticalMirrorPositions(),
 			new LoadCommand(),
 			new SaveCommand(),
 			new AddObjectCommand(),
