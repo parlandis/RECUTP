@@ -1,0 +1,10 @@
+addObject (12,10) Grenade
+Update
+addObject (12,4) gr LEFT
+uPdate
+upDate
+a r u u r
+updAte
+addObject (12,2) gr Stop 1
+u
+exit

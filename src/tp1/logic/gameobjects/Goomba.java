@@ -113,8 +113,17 @@ public class Goomba extends MovingObject {
 
 	@Override
 	public boolean receiveInteraction(Grenade grenade) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean interacted = false;
+		if(grenade.isExploded()) {
+			if(grenade.menor1(getPosition())) {
+				interacted = true;
+				game.addPoints(100);
+				super.die();
+			}
+		}
+		
+
+		return interacted;
 	}
 
 }

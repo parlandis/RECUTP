@@ -62,6 +62,11 @@ public abstract class GameObject implements GameItem {
 	protected boolean matchCommandName(String name) {
 		return getName().equalsIgnoreCase(name) || getShort().equalsIgnoreCase(name);
 	}
+	
+	@Override
+	public boolean menor1(Position pos) {
+		return pos.menor1(this.getPosition());
+	}
 
 	@Override
 	public boolean isInPosition(Position p) {
@@ -96,7 +101,7 @@ public abstract class GameObject implements GameItem {
 	protected void requestInteractions() {
 		this.game.doInteractionsFrom(this);
 	}
-
+	
 	protected boolean isSolidAt(Position position) {
 		return this.game.isSolid(position);
 	}

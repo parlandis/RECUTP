@@ -10,10 +10,12 @@ import tp1.view.Messages;
 
 public class Grenade extends MovingObject {
 	private int turnos;
+	private boolean exploded; 
 	
 	Grenade(){
 		super(null, null, Action.STOP);
-		this.turnos = 0;
+		this.turnos = 3;
+		this.exploded = false;
 	}
 	
 	
@@ -21,6 +23,7 @@ public class Grenade extends MovingObject {
 	public Grenade(GameWorld game, Position pos, Action direction, int turnos) {
 		super(game, pos, direction);
 		this.turnos = turnos;
+		this.exploded = false;
 	}
 	
 	public Grenade(Grenade other) {
@@ -36,7 +39,7 @@ public class Grenade extends MovingObject {
 	@Override
 	protected MovingObject createMovingObject(GameWorld game, Position pos, Action dir, String[] objWords)
 			throws ObjectParseException {
-		int turnos = 3;
+		int turnos = 2;
 		if (objWords.length == 2) {
 			dir = Action.STOP;
 		}
@@ -59,11 +62,29 @@ public class Grenade extends MovingObject {
 		return (Grenade) super.parse(objWords, game);
 	}
 	
+	public void moveInit() {
+		moveHorizontal(getDirection());
+		requestInteractions();
+		if(isAlive()) {
+			moveHorizontal(getDirection());
+			requestInteractions();
+		}
+		turnos--;
+	}
+	
 	
 	@Override
 	public void update() {
 		//TODO: 
-		
+		if(turnos > 0) {
+			super.update();
+		}
+		else {
+			exploded = true;
+			requestInteractions();
+			super.die();
+		}
+		turnos--;
 	}
 	
 	@Override
@@ -71,28 +92,28 @@ public class Grenade extends MovingObject {
 		return Messages.GRENADE;
 	}
 	
-	@Override
-	public boolean interactWith(GameItem other) {
-		//TODO : Cambiar la interaccion
-		return other.isInPosition(getPosition()) && other.isAlive() && other.receiveInteraction(this);
+	public boolean isExploded() {
+		return exploded;
 	}
 	
-	public void explode() {
-		super.die();
-		game.explode(this.getPosition());
+	@Override
+	public boolean interactWith(GameItem other) {
+		boolean interact = false;
+		if(!this.exploded) { // Forma normal no va a interacturar
+			interact = other.isInPosition(getPosition()) && other.isAlive() && other.receiveInteraction(this); 
+		}
+		interact = other.menor1(getPosition()) && other.isAlive() && other.receiveInteraction(this);
+		return interact;
+	}
+	
+	@Override
+	public boolean receiveInteraction(Mario mario) {
+		return false;
 	}
 	
 	@Override
 	public boolean receiveInteraction(Goomba goomba) {
-		//TODO: si hay
-		boolean interacted = false;
-		if(goomba.isInPosition(getPosition())) {
-			interacted = true;
-			game.addPoints(100);
-			goomba.die();
-			this.explode();
-		}
-		return interacted;
+		return false;
 	}
 	
 	@Override
@@ -135,11 +156,8 @@ public class Grenade extends MovingObject {
 		return new Grenade(this);
 	}
 
-
-
 	@Override
 	public boolean receiveInteraction(Grenade grenade) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	

@@ -18,6 +18,6 @@ public interface GameWorld {
     void doInteractionsFrom(GameItem item);
 
     void addToGame(GameObject obj);
-	void explode(Position position);
+
 
 }

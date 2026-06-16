@@ -120,8 +120,7 @@ public class ExitDoor extends GameObject {
 	}
 
 	@Override
-	public boolean receiveInteraction(Grenade grenade) {
-		// TODO Auto-generated method stub
+	public boolean receiveInteraction(Grenade grenade) {  // La dejo sin que muera porque no tendria sentido 
 		return false;
 	}
 }

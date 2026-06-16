@@ -45,6 +45,7 @@ public enum Action {
 				case "gr":
 				case "granade":
 					movimiento = Action.GRANADE;
+					break;
 				case "r":
 				case "right":
 					movimiento = Action.RIGHT;
@@ -77,6 +78,9 @@ public enum Action {
 				break;
 			case DOWN:
 				accion = UP;
+				break;
+			case GRANADE: 
+				accion = null;
 				break;
 		}
 		return accion;

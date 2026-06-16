@@ -53,9 +53,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 			end = true;
 	}
 	
-	public void explode(Position pos) {
-		gameObjects.explode(pos);
-	}
 
 	@Override
 	public void save(String fileName) throws GameModelException {
@@ -195,6 +192,10 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	@Override
 	public void doInteractionsFrom(GameItem item) {
 		gameObjects.doInteractionFrom(item);
+	}
+	
+	public void explode(GameItem item) {
+		gameObjects.doExplodeInteraccionFrom(item);
 	}
 
 	@Override
@@ -351,5 +352,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		gameObjects.add(new Mushroom(this, new Position(12, 8)));
 		gameObjects.add(new Mushroom(this, new Position(2, 20)));
 	}
+
+
 
 }

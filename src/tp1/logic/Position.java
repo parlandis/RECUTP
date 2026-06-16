@@ -28,9 +28,10 @@ public class Position {
     }
     
     public boolean menor1(Position pos) {
-    	
-    	
-    	return false;
+    	boolean enrango = false;
+    	int dif = Math.abs(this.row - pos.row) + Math.abs(this.col - pos.col);
+    	if(dif <= 1) enrango = true;
+    	return enrango;
     }
 
     @Override

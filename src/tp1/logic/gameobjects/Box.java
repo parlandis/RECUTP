@@ -149,7 +149,14 @@ public class Box extends GameObject {
 
 	@Override
 	public boolean receiveInteraction(Grenade grenade) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean interacted = false;
+		if(grenade.isExploded()) {
+			if(grenade.menor1(getPosition())) {
+				interacted = true;
+				super.die();
+			}
+		}
+		
+		return interacted;
 	}
 }

@@ -82,15 +82,9 @@ public class Mario extends MovingObject implements Player {
 	private void doAction(Action a) {
 		if(a == Action.GRANADE) {
 			Position pos = getPosition();
-			Position pos0 = pos.move(getDirection());
-			Grenade gr = new Grenade(game, pos0, getDirection(), 3);
+			Grenade gr = new Grenade(game, pos, getDirection(), 3);
 			addObject(gr);
-			int cont = 0;
-			while(cont < 2 && gr.isAlive()) {
-				gr.moveHorizontal(getDirection());
-				gr.requestInteractions();
-				cont++;
-			}
+			gr.moveInit();
 		}
 		else {
 			if (a == Action.UP) {
@@ -255,8 +249,18 @@ public class Mario extends MovingObject implements Player {
 
 	@Override
 	public boolean receiveInteraction(Grenade grenade) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean interacted = false;
+		if(grenade.isExploded()) {
+			if(grenade.menor1(getPosition())) {
+				interacted = true;
+				if(this.big) {
+					this.MakeDamage();
+				}
+				else game.addPoints(-100);
+			}
+		}
+		
+		return interacted;
 	}
 
 }

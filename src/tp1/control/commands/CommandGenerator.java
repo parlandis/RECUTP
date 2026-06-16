@@ -9,6 +9,7 @@ import tp1.view.Messages;
 public class CommandGenerator {
 
 	private static final List<Command> availableCommands = Arrays.asList( // Siempre tenemos que declarar los comandos
+			new ReverseCommand(),
 			new LoadCommand(),
 			new SaveCommand(),
 			new AddObjectCommand(),
@@ -16,8 +17,8 @@ public class CommandGenerator {
 			new UpdateCommand(),
 			new ResetCommand(),
 			new HelpCommand(),
-			new ExitCommand(),
-			new ReverseCommand());
+			new ExitCommand());
+
 
 	public static Command parse(String[] commandWords) throws CommandParseException {
 		if (commandWords == null)

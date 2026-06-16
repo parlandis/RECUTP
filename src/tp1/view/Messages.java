@@ -172,7 +172,7 @@ public class Messages {
 	public static final String COMMAND_REVERSE_NAME = "reverseDirections";
 	public static final String COMMAND_REVERSE_SHORTCUT = "rD";
 	public static final String COMMAND_REVERSE_DETAILS = "[r]everse [D]irections";
-	public static final String COMMAND_REVERSE_HELP = "reverse all moving objects’ directions";
+	public static final String COMMAND_REVERSE_HELP = "reverse all moving objects' directions";
 	
 	
 	

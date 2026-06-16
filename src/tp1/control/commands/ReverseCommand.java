@@ -18,7 +18,9 @@ public class ReverseCommand extends NoParamsCommand{
 	
 	@Override
 	public void execute(GameModel game, GameView view) throws CommandExecuteException{
-	    game.reverse(); 	
+	    game.reverse(); 
+	    //game.update();
+		view.showGame();
 	}
 	
 

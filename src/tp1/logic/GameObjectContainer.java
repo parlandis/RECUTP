@@ -66,6 +66,12 @@ public class GameObjectContainer {
             }
         }
     }
+    
+	public void doExplodeInteraccionFrom(GameItem item) {
+
+		
+	}
+    
 
     public boolean isAlive(Position pos) {
         boolean living = false;
@@ -132,4 +138,6 @@ public class GameObjectContainer {
         }
         return sb.toString();
     }
+
+
 }
